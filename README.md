@@ -152,6 +152,19 @@ To publish: **Vercel → Add New → Project → import this repo** — `vercel.
 points at `site/` (blank build/install commands). Every push to `main` redeploys.
 Live scoring stays local: `python webapp/server.py`.
 
+### Live any-URL demo (free Cloudflare tunnel)
+
+The Vercel site replays recorded results. For **live scoring of any URL, by anyone**,
+expose your running pipeline through a free Cloudflare quick tunnel:
+
+```powershell
+scripts\run_live_demo.cmd     # server + tunnel; prints a shareable https:// link
+```
+
+The link works while the window is open (Ctrl+C stops both; each start prints a fresh
+`*.trycloudflare.com` URL). The API rejects private/internal hosts and sends
+permissive CORS so a hosted front end could call it too.
+
 ### Individual commands
 
 ```powershell
@@ -210,6 +223,7 @@ scripts/
   run_benchmark_captures.py              — batch capture + score + axe over manifest
   report_correlation_and_compute.py      — ICC / ρ / MAE / compute report (RQ3)
   build_demo_site.py                     — rebuild hosted-demo data from recorded runs
+  run_live_demo.cmd / .ps1               — server + free Cloudflare tunnel (live public demo)
 site/                                    — static hosted demo (recorded results, Vercel)
 vercel.json                              — Vercel config: serve site/ with no build
 webapp/

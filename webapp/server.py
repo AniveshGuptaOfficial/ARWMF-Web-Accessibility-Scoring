@@ -15,9 +15,11 @@ once per process; serial jobs keep that cache warm and avoid parallel browsers).
 """
 from __future__ import annotations
 
+import ipaddress
 import os
 import queue
 import re
+import socket
 import sys
 import threading
 import time
@@ -51,6 +53,42 @@ _URL_RE = re.compile(r"^https?://[^\s/]+\.[^\s/]+", re.IGNORECASE)
 def _slug(url: str) -> str:
     host = re.sub(r"[^a-z0-9.-]", "", url.split("//", 1)[-1].split("/", 1)[0].lower())
     return host or "page"
+
+
+def _is_private_host(url: str) -> bool:
+    """True when the URL targets loopback/private/link-local space.
+
+    The server is exposed publicly (Cloudflare Tunnel), so a visitor must not be
+    able to point the embedded browser at this machine's internal network.
+    """
+    host = url.split("//", 1)[-1].split("/", 1)[0].split("@")[-1].split(":")[0].lower()
+    if not host or host == "localhost" or host.endswith((".local", ".internal", ".lan")):
+        return True
+    try:
+        ip = ipaddress.ip_address(host)
+    except ValueError:
+        ip = None
+    if ip is not None:
+        return ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_reserved
+    try:
+        infos = socket.getaddrinfo(host, None)
+    except OSError:
+        return False  # unresolvable — the pipeline will surface its own error
+    for info in infos:
+        try:
+            ip = ipaddress.ip_address(info[4][0])
+        except ValueError:
+            continue
+        if ip.is_private or ip.is_loopback or ip.is_link_local or ip.is_reserved:
+            return True
+    return False
+
+
+@app.after_request
+def _allow_cors(resp):
+    # lets the hosted front end (Vercel demo) call this backend from any origin
+    resp.headers["Access-Control-Allow-Origin"] = "*"
+    return resp
 
 
 def _worker() -> None:
@@ -99,6 +137,8 @@ def analyze():
         return jsonify(error="url must start with http:// or https:// and contain a host"), 400
     if len(url) > 2048:
         return jsonify(error="url too long"), 400
+    if _is_private_host(url):
+        return jsonify(error="private or internal hosts are not allowed"), 400
 
     viewport = "mobile" if data.get("viewport") == "mobile" else "desktop"
     job_id = uuid.uuid4().hex

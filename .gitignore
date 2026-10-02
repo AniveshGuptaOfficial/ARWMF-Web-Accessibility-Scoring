@@ -11,6 +11,9 @@ venv/
 # Node (reinstall with: npm install)
 node_modules/
 
+# Local tooling (downloaded on demand by scripts/run_live_demo.ps1)
+tools/cloudflared.exe
+
 # Generated outputs
 page_captures/
 scores*.json
