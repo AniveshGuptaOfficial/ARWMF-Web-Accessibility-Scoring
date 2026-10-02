@@ -1,0 +1,471 @@
+{
+ "source": "A-RWMF benchmark run1 \u2014 8 pages, desktop viewport, recorded 2026-09",
+ "note": "Pre-recorded REAL results produced by the A-RWMF pipeline (Playwright capture -> five dimensions -> weighted fusion -> axe-core). This static demo replays them client-side. Live scoring runs locally: python webapp/server.py",
+ "pages": [
+  {
+   "id": "p01",
+   "label": "vtrade",
+   "url": "https://vtrade-ten.vercel.app/",
+   "category": "experimental",
+   "score": {
+    "url": "https://vtrade-ten.vercel.app/",
+    "viewport": "desktop",
+    "composite": 89.6,
+    "dimensions": {
+     "contrast": 87.7,
+     "target_size": 95.8,
+     "layout": 89.0,
+     "alt_text": null,
+     "link_text": 87.0
+    },
+    "applied_weights": {
+     "contrast": 0.3333,
+     "target_size": 0.2,
+     "layout": 0.2667,
+     "link_text": 0.2
+    },
+    "counts": {
+     "text_elements": 81,
+     "interactive": 24,
+     "images_applicable": 0,
+     "links": 14,
+     "n_elements": 174
+    },
+    "degraded": [],
+    "seconds": 45.128
+   },
+   "axe": {
+    "url": "https://vtrade-ten.vercel.app/",
+    "axe_score": 94.7,
+    "n_violations": 5,
+    "n_elements": 178,
+    "violations": [
+     {
+      "id": "color-contrast",
+      "impact": "serious",
+      "nodes_count": 4
+     },
+     {
+      "id": "heading-order",
+      "impact": "moderate",
+      "nodes_count": 1
+     },
+     {
+      "id": "landmark-one-main",
+      "impact": "moderate",
+      "nodes_count": 1
+     },
+     {
+      "id": "link-in-text-block",
+      "impact": "serious",
+      "nodes_count": 2
+     },
+     {
+      "id": "region",
+      "impact": "moderate",
+      "nodes_count": 8
+     }
+    ]
+   },
+   "screenshot": "assets/p01.jpg"
+  },
+  {
+   "id": "p02",
+   "label": "example.com",
+   "url": "https://example.com/",
+   "category": "reference",
+   "score": {
+    "url": "https://example.com/",
+    "viewport": "desktop",
+    "composite": 70.0,
+    "dimensions": {
+     "contrast": 100.0,
+     "target_size": null,
+     "layout": 85.0,
+     "alt_text": null,
+     "link_text": 0.0
+    },
+    "applied_weights": {
+     "contrast": 0.4167,
+     "layout": 0.3333,
+     "link_text": 0.25
+    },
+    "counts": {
+     "text_elements": 3,
+     "interactive": 1,
+     "images_applicable": 0,
+     "links": 1,
+     "n_elements": 5
+    },
+    "degraded": [],
+    "seconds": 0.034
+   },
+   "axe": {
+    "url": "https://example.com/",
+    "axe_score": 98.0,
+    "n_violations": 2,
+    "n_elements": 5,
+    "violations": [
+     {
+      "id": "landmark-one-main",
+      "impact": "moderate",
+      "nodes_count": 1
+     },
+     {
+      "id": "region",
+      "impact": "moderate",
+      "nodes_count": 1
+     }
+    ]
+   },
+   "screenshot": "assets/p02.jpg"
+  },
+  {
+   "id": "p03",
+   "label": "Wikipedia",
+   "url": "https://www.wikipedia.org/",
+   "category": "reference",
+   "score": {
+    "url": "https://www.wikipedia.org/",
+    "viewport": "desktop",
+    "composite": 71.5,
+    "dimensions": {
+     "contrast": 95.7,
+     "target_size": 96.0,
+     "layout": 91.1,
+     "alt_text": 0.0,
+     "link_text": 100.0
+    },
+    "applied_weights": {
+     "contrast": 0.25,
+     "target_size": 0.15,
+     "layout": 0.2,
+     "alt_text": 0.25,
+     "link_text": 0.15
+    },
+    "counts": {
+     "text_elements": 70,
+     "interactive": 32,
+     "images_applicable": 1,
+     "links": 29,
+     "n_elements": 1156
+    },
+    "degraded": [],
+    "seconds": 1.391
+   },
+   "axe": {
+    "url": "https://www.wikipedia.org/",
+    "axe_score": 100.0,
+    "n_violations": 0,
+    "n_elements": 1156,
+    "violations": []
+   },
+   "screenshot": "assets/p03.jpg"
+  },
+  {
+   "id": "p04",
+   "label": "gov.uk",
+   "url": "https://www.gov.uk/",
+   "category": "government",
+   "score": {
+    "url": "https://www.gov.uk/",
+    "viewport": "desktop",
+    "composite": 71.9,
+    "dimensions": {
+     "contrast": 99.9,
+     "target_size": 94.1,
+     "layout": 89.8,
+     "alt_text": 0.0,
+     "link_text": 98.7
+    },
+    "applied_weights": {
+     "contrast": 0.25,
+     "target_size": 0.15,
+     "layout": 0.2,
+     "alt_text": 0.25,
+     "link_text": 0.15
+    },
+    "counts": {
+     "text_elements": 132,
+     "interactive": 88,
+     "images_applicable": 4,
+     "links": 78,
+     "n_elements": 580
+    },
+    "degraded": [],
+    "seconds": 2.978
+   },
+   "axe": {
+    "url": "https://www.gov.uk/",
+    "axe_score": 99.8,
+    "n_violations": 1,
+    "n_elements": 580,
+    "violations": [
+     {
+      "id": "region",
+      "impact": "moderate",
+      "nodes_count": 2
+     }
+    ]
+   },
+   "screenshot": "assets/p04.jpg"
+  },
+  {
+   "id": "p05",
+   "label": "BBC",
+   "url": "https://www.bbc.com/",
+   "category": "news",
+   "score": {
+    "url": "https://www.bbc.com/",
+    "viewport": "desktop",
+    "composite": 71.4,
+    "dimensions": {
+     "contrast": 100.0,
+     "target_size": 93.8,
+     "layout": 63.8,
+     "alt_text": 18.2,
+     "link_text": 99.9
+    },
+    "applied_weights": {
+     "contrast": 0.25,
+     "target_size": 0.15,
+     "layout": 0.2,
+     "alt_text": 0.25,
+     "link_text": 0.15
+    },
+    "counts": {
+     "text_elements": 346,
+     "interactive": 219,
+     "images_applicable": 121,
+     "links": 175,
+     "n_elements": 2582
+    },
+    "degraded": [],
+    "seconds": 52.988
+   },
+   "axe": {
+    "url": "https://www.bbc.com/",
+    "axe_score": 99.9,
+    "n_violations": 3,
+    "n_elements": 2591,
+    "violations": [
+     {
+      "id": "heading-order",
+      "impact": "moderate",
+      "nodes_count": 1
+     },
+     {
+      "id": "landmark-unique",
+      "impact": "moderate",
+      "nodes_count": 1
+     },
+     {
+      "id": "page-has-heading-one",
+      "impact": "moderate",
+      "nodes_count": 1
+     }
+    ]
+   },
+   "screenshot": "assets/p05.jpg"
+  },
+  {
+   "id": "p06",
+   "label": "Apple",
+   "url": "https://www.apple.com/",
+   "category": "commerce",
+   "score": {
+    "url": "https://www.apple.com/",
+    "viewport": "desktop",
+    "composite": 74.5,
+    "dimensions": {
+     "contrast": 99.9,
+     "target_size": 95.0,
+     "layout": 85.8,
+     "alt_text": 17.0,
+     "link_text": 92.1
+    },
+    "applied_weights": {
+     "contrast": 0.25,
+     "target_size": 0.15,
+     "layout": 0.2,
+     "alt_text": 0.25,
+     "link_text": 0.15
+    },
+    "counts": {
+     "text_elements": 204,
+     "interactive": 156,
+     "images_applicable": 29,
+     "links": 132,
+     "n_elements": 1805
+    },
+    "degraded": [],
+    "seconds": 6.534
+   },
+   "axe": {
+    "url": "https://www.apple.com/",
+    "axe_score": 99.8,
+    "n_violations": 4,
+    "n_elements": 1796,
+    "violations": [
+     {
+      "id": "aria-allowed-role",
+      "impact": "minor",
+      "nodes_count": 3
+     },
+     {
+      "id": "aria-required-children",
+      "impact": "critical",
+      "nodes_count": 2
+     },
+     {
+      "id": "color-contrast",
+      "impact": "serious",
+      "nodes_count": 1
+     },
+     {
+      "id": "region",
+      "impact": "moderate",
+      "nodes_count": 1
+     }
+    ]
+   },
+   "screenshot": "assets/p06.jpg"
+  },
+  {
+   "id": "p07",
+   "label": "MDN",
+   "url": "https://developer.mozilla.org/",
+   "category": "documentation",
+   "score": {
+    "url": "https://developer.mozilla.org/",
+    "viewport": "desktop",
+    "composite": 90.9,
+    "dimensions": {
+     "contrast": 100.0,
+     "target_size": 92.7,
+     "layout": 80.9,
+     "alt_text": 86.8,
+     "link_text": 94.4
+    },
+    "applied_weights": {
+     "contrast": 0.25,
+     "target_size": 0.15,
+     "layout": 0.2,
+     "alt_text": 0.25,
+     "link_text": 0.15
+    },
+    "counts": {
+     "text_elements": 217,
+     "interactive": 83,
+     "images_applicable": 1,
+     "links": 67,
+     "n_elements": 682
+    },
+    "degraded": [],
+    "seconds": 3.329
+   },
+   "axe": {
+    "url": "https://developer.mozilla.org/",
+    "axe_score": 99.4,
+    "n_violations": 3,
+    "n_elements": 682,
+    "violations": [
+     {
+      "id": "landmark-one-main",
+      "impact": "moderate",
+      "nodes_count": 1
+     },
+     {
+      "id": "landmark-unique",
+      "impact": "moderate",
+      "nodes_count": 1
+     },
+     {
+      "id": "region",
+      "impact": "moderate",
+      "nodes_count": 6
+     }
+    ]
+   },
+   "screenshot": "assets/p07.jpg"
+  },
+  {
+   "id": "p08",
+   "label": "Hacker News",
+   "url": "https://news.ycombinator.com/",
+   "category": "news",
+   "score": {
+    "url": "https://news.ycombinator.com/",
+    "viewport": "desktop",
+    "composite": 50.2,
+    "dimensions": {
+     "contrast": 84.1,
+     "target_size": 30.0,
+     "layout": 60.4,
+     "alt_text": 0.0,
+     "link_text": 83.6
+    },
+    "applied_weights": {
+     "contrast": 0.25,
+     "target_size": 0.15,
+     "layout": 0.2,
+     "alt_text": 0.25,
+     "link_text": 0.15
+    },
+    "counts": {
+     "text_elements": 321,
+     "interactive": 230,
+     "images_applicable": 1,
+     "links": 198,
+     "n_elements": 808
+    },
+    "degraded": [],
+    "seconds": 7.207
+   },
+   "axe": {
+    "url": "https://news.ycombinator.com/",
+    "axe_score": 76.9,
+    "n_violations": 7,
+    "n_elements": 808,
+    "violations": [
+     {
+      "id": "color-contrast",
+      "impact": "serious",
+      "nodes_count": 242
+     },
+     {
+      "id": "image-alt",
+      "impact": "critical",
+      "nodes_count": 2
+     },
+     {
+      "id": "label",
+      "impact": "critical",
+      "nodes_count": 1
+     },
+     {
+      "id": "landmark-one-main",
+      "impact": "moderate",
+      "nodes_count": 1
+     },
+     {
+      "id": "link-name",
+      "impact": "serious",
+      "nodes_count": 1
+     },
+     {
+      "id": "page-has-heading-one",
+      "impact": "moderate",
+      "nodes_count": 1
+     },
+     {
+      "id": "region",
+      "impact": "moderate",
+      "nodes_count": 1
+     }
+    ]
+   },
+   "screenshot": "assets/p08.jpg"
+  }
+ ]
+}

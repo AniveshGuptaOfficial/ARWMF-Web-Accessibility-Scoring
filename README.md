@@ -37,12 +37,16 @@ grounded in human judgement rather than asserted.
 
 ## Demo
 
+**Hosted demo** → <https://arwmf-web-accessibility-scoring.vercel.app> — the same 3D
+interface in your browser, replaying **real recorded results** from the 8-page benchmark
+run (clearly badged *pre-recorded*; live scoring always runs locally).
+
 | Landing (3D scene) | Results (orbitable 3D chart) |
 |---|---|
 | ![Landing](docs/screenshots/web_ui_landing.png) | ![Results](docs/screenshots/web_ui_results.png) |
 
-Type a URL → watch the analysis phases → orbit the five-dimension bar chart against
-the axe-core ghost pillar (drag to rotate, scroll to zoom).
+Click a recorded-page chip (or type a URL) → watch the analysis phases → orbit the
+five-dimension bar chart against the axe-core ghost pillar (drag to rotate, scroll to zoom).
 
 ---
 
@@ -133,6 +137,21 @@ python webapp/server.py                   # → http://127.0.0.1:5000
 > HuggingFace cache and warms them (~40 s). Everything after that is fully offline;
 > small pages score in ~1 s (heavy full-page vision takes longer).
 
+### Hosted demo (static site, Vercel)
+
+The live pipeline (Playwright + PyTorch + a job queue) can't run serverless, so the repo
+ships a **static demo** in `site/`: the identical 3D UI replaying the real recorded
+benchmark results client-side — no backend, no build step.
+
+```powershell
+python scripts/build_demo_site.py                  # rebuild site/data + assets from recorded runs
+python -m http.server 8090 --directory site        # preview locally → http://127.0.0.1:8090
+```
+
+To publish: **Vercel → Add New → Project → import this repo** — `vercel.json` already
+points at `site/` (blank build/install commands). Every push to `main` redeploys.
+Live scoring stays local: `python webapp/server.py`.
+
 ### Individual commands
 
 ```powershell
@@ -190,6 +209,9 @@ scripts/
   run_all.cmd                            — ONE command: tests → batch → report
   run_benchmark_captures.py              — batch capture + score + axe over manifest
   report_correlation_and_compute.py      — ICC / ρ / MAE / compute report (RQ3)
+  build_demo_site.py                     — rebuild hosted-demo data from recorded runs
+site/                                    — static hosted demo (recorded results, Vercel)
+vercel.json                              — Vercel config: serve site/ with no build
 webapp/
   server.py                              — Flask API + job queue over the pipeline
   static/                                — Three.js front end (vendored, offline)

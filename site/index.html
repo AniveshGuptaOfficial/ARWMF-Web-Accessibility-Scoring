@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>A-RWMF Demo · Offline Web Accessibility Scoring</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23050912'/%3E%3Crect x='6' y='16' width='4' height='10' rx='1' fill='%23f6ad55'/%3E%3Crect x='14' y='10' width='4' height='16' rx='1' fill='%2363b3ed'/%3E%3Crect x='22' y='6' width='4' height='20' rx='1' fill='%234fd1c5'/%3E%3C/svg%3E"/>
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="demo.css"/>
+</head>
+<body>
+<canvas id="scene"></canvas>
+<div id="labels" aria-hidden="true"></div>
+
+<div id="ui">
+  <header id="topbar">
+    <div class="logo">A&middot;RWMF</div>
+    <div class="tag">Adaptive Reliability-Weighted Multimodal Fusion &mdash; offline web accessibility scoring</div>
+  </header>
+
+  <div id="demo-badge" title="This hosted demo replays REAL recorded results from an 8-page benchmark run. Live scoring runs 100% locally (python webapp/server.py) — no cloud APIs.">&#9673; PRE-RECORDED DEMO</div>
+
+  <main>
+    <!-- ============ landing ============ -->
+    <section id="landing" class="screen">
+      <h1>Score any website<br/><span class="grad">in five dimensions</span></h1>
+      <p class="sub">Contrast &middot; target size &middot; layout &middot; alt text &middot; link text &mdash;
+         fused offline and benchmarked against axe-core. Pick a recorded page below.</p>
+
+      <form id="analyze-form" autocomplete="off">
+        <input id="url-input" type="text" placeholder="https://example.com" spellcheck="false"
+               aria-label="website URL"/>
+        <select id="viewport-select" aria-label="viewport" disabled
+                title="recordings are desktop viewport">
+          <option value="desktop">1280&thinsp;&times;&thinsp;800</option>
+        </select>
+        <button type="submit" id="go-btn">ANALYZE</button>
+      </form>
+
+      <div id="chips" aria-label="recorded pages"></div>
+      <div id="error-banner" class="error hidden"></div>
+
+      <p class="foot">This hosted demo replays <b>real recorded results</b> from an 8-page benchmark run
+        of the A-RWMF pipeline. Live scoring runs 100&nbsp;% locally &mdash; no cloud APIs:
+        <code>python webapp/server.py</code>.</p>
+    </section>
+
+    <!-- ============ loading ============ -->
+    <section id="loading" class="screen hidden">
+      <div class="phase-line"><span id="phase-text">queued</span><span class="dots"></span></div>
+      <div class="progress"><div id="progress-fill"></div></div>
+      <div id="loading-url" class="loading-url"></div>
+      <p class="foot" id="warm-hint">capture &rarr; contrast / target-size / layout / alt-text / link-text &rarr; fusion &rarr; axe-core</p>
+      <button id="cancel-btn" class="ghost">&larr; back</button>
+    </section>
+
+    <!-- ============ results ============ -->
+    <section id="results" class="screen hidden">
+      <div class="panel">
+        <div class="panel-head">
+          <div class="head-left">
+            <div class="r-url" id="r-url"></div>
+            <div class="r-sub" id="r-sub"></div>
+          </div>
+          <div class="head-scores">
+            <div class="score-big"><span id="r-composite">0.0</span><label>COMPOSITE</label></div>
+            <div class="score-axe" id="r-axe-box"><span id="r-axe-score">&ndash;</span><label>AXE-CORE</label></div>
+          </div>
+        </div>
+
+        <div class="dims" id="r-dims"></div>
+
+        <div class="cols">
+          <div class="box">
+            <h3>axe violations <span id="r-viol-count"></span></h3>
+            <div id="r-violations"></div>
+          </div>
+          <div class="box">
+            <h3>run details</h3>
+            <div id="r-meta"></div>
+          </div>
+        </div>
+
+        <div class="panel-foot">
+          <a id="r-shot" href="#" target="_blank" rel="noopener">full screenshot &#8599;</a>
+          <span class="honest">recorded run &middot; human-consensus study pending (ICC gate &ge;&nbsp;0.70)</span>
+          <button id="again-btn" class="ghost">&larr; analyze another</button>
+        </div>
+      </div>
+      <p class="drag-hint">drag to orbit the 3D chart &middot; scroll to zoom</p>
+    </section>
+  </main>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
