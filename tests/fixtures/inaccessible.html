@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bad Demo Page</title>
+  <style>
+    body { margin: 0; background: #ffffff; }
+    .hero { background: #f4f4f4; padding: 3rem; }
+    .hero h1 { color: #cccccc; font-size: 2.2rem; margin: 0; }   /* ~1.6:1 fail */
+    .muted { color: #dddddd; font-size: 13px; }                   /* ~1.4:1 fail */
+    .tiny-link { color: #bbbbbb; font-size: 12px; }
+    a { color: #999999; }                                          /* ~2.8:1 fail */
+    .icon-btn { display: inline-block; width: 14px; height: 14px;
+                background: #333; border: none; }                  /* undersized */
+    h3 { color: #333; }  h5 { color: #333; }  /* heading levels skipped */
+    /* deliberately no main/nav landmarks, no skip link, two h1s via markup below */
+    .clutter-box { display: inline-block; width: 24px; height: 24px;
+                   border: 1px solid #000; margin: 1px; }
+  </style>
+</head>
+<body>
+  <div class="hero"><h1>Promotional headline one</h1></div>
+  <div class="hero"><h1>Promotional headline two</h1></div>
+
+  <p class="muted">Fine print nobody can read against the white page.</p>
+  <p class="tiny-link"><a href="#a">click here</a> for details,
+     <a href="#b">here</a> is another one,
+     <a href="#c">read more</a> about nothing in particular.</p>
+
+  <p><button class="icon-btn" aria-label="settings"></button>
+     <button class="icon-btn" aria-label="search"></button></p>
+
+  <!-- missing alt entirely -->
+  <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200'><rect width='400' height='200' fill='%23888888'/><text x='200' y='110' font-size='24' fill='white' text-anchor='middle'>product photo</text></svg>">
+  <!-- filename alt -->
+  <img src="hero_banner.jpg" alt="hero_banner.jpg">
+  <!-- empty alt, not marked decorative -->
+  <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='200'><rect width='400' height='200' fill='%23aaaaaa'/></svg>" alt="">
+
+  <h3>Skipped down to h3</h3>
+  <h5>Then straight to h5</h5>
+
+  <!-- clutter generator -->
+  <div>
+    <span class="clutter-box"></span><span class="clutter-box"></span><span class="clutter-box"></span><span class="clutter-box"></span>
+    <span class="clutter-box"></span><span class="clutter-box"></span><span class="clutter-box"></span><span class="clutter-box"></span>
+    <span class="clutter-box"></span><span class="clutter-box"></span><span class="clutter-box"></span><span class="clutter-box"></span>
+    <span class="clutter-box"></span><span class="clutter-box"></span><span class="clutter-box"></span><span class="clutter-box"></span>
+    <span class="clutter-box"></span><span class="clutter-box"></span><span class="clutter-box"></span><span class="clutter-box"></span>
+  </div>
+
+  <p><a href="#longer-descriptive-label-needed">buy premium subscription plan</a></p>
+</body>
+</html>

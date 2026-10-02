@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.pytest_cache/
+
+# Node (reinstall with: npm install)
+node_modules/
+
+# Generated outputs
+page_captures/
+scores*.json
+scores_*.csv
+
+# Human study data (created by raters — templates stay in the repo)
+human_study/ratings.csv
+human_study/consensus.csv
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

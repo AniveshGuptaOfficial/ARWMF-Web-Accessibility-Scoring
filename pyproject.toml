@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arwmf"
+version = "0.1.0"
+description = "Lightweight offline multimodal web accessibility scoring"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "pillow",
+    "opencv-python",
+    "playwright",
+    "transformers",
+    "sentence-transformers",
+    "torch",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+web = ["flask"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

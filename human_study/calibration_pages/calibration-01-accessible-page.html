@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Accessible Demo Page — BCSE397J Fixture</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; color: #1a1a1a; background: #ffffff; }
+    header, footer { background: #003366; color: #ffffff; padding: 1rem 2rem; }
+    header a, footer a { color: #ffffff; }
+    nav { background: #00509e; padding: 0.5rem 2rem; }
+    nav a { color: #ffffff; margin-right: 1.25rem; text-decoration: underline; }
+    main { max-width: 60rem; margin: 0 auto; padding: 2rem; }
+    h1 { font-size: 2rem; color: #002b55; }
+    h2 { font-size: 1.4rem; color: #002b55; }
+    .btn { display: inline-block; background: #00509e; color: #ffffff;
+           padding: 14px 22px; border-radius: 6px; text-decoration: none;
+           min-height: 48px; min-width: 48px; }
+    .btn:focus { outline: 3px solid #ffbf47; outline-offset: 2px; }
+    img { max-width: 100%; height: auto; display: block; }
+    figure { margin: 1.5rem 0; }
+    figcaption { font-size: 0.9rem; color: #444; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="skip-link" href="#main" style="color:#fff">Skip to main content</a>
+    <p class="site-name" style="color:#fff;font-size:1.1rem;font-weight:700;margin:.2rem 0">Accessible Demo Site</p>
+  </header>
+  <nav aria-label="Primary">
+    <a href="#main">Home</a>
+    <a href="#articles">Articles</a>
+    <a href="#about">About this demo</a>
+  </nav>
+  <main id="main">
+    <h1>Welcome to the accessible demo page</h1>
+    <p>This fixture passes the checks our framework scores: strong contrast
+       (dark text on white), large touch targets, one <code>h1</code>, a
+       logical heading order, landmarks, a skip link, and meaningful link text.</p>
+
+    <h2>Content images with descriptive alt text</h2>
+    <figure>
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'><rect width='640' height='360' fill='%232e7d32'/><circle cx='320' cy='160' r='90' fill='%23ffd54f'/><text x='320' y='320' font-size='32' fill='white' text-anchor='middle'>Sunrise over green hills</text></svg>"
+           alt="A golden sun rising over green hills at dawn, painted in a simple flat illustration style">
+      <figcaption>Illustration: sunrise over green hills.</figcaption>
+    </figure>
+
+    <h2>Clear calls to action</h2>
+    <p><a class="btn" href="#articles">Read the full accessibility article</a></p>
+    <p><a href="#about">Learn about our WCAG 2.2 audit methodology</a></p>
+
+    <h2 id="articles">Articles</h2>
+    <p>Body copy in near-black (#1a1a1a) on white exceeds the 4.5:1 contrast
+       requirement comfortably at this size.</p>
+
+    <h2 id="about">About</h2>
+    <p>Targets are at least 48×48 px, exceeding the 24×24 px minimum.</p>
+  </main>
+  <footer>
+    <p>Fixture page for BCSE397J offline accessibility scoring framework.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,10 @@
+numpy
+pandas
+scipy
+pillow
+opencv-python
+playwright
+transformers
+sentence-transformers
+torch
+pytest
