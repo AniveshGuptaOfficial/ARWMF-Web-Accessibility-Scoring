@@ -260,3 +260,8 @@ injection, and the web API contract.
 ## License / academic use
 
 Course project for BCSE397J — for academic evaluation and demonstration.
+
+**All rights reserved** — see [LICENSE](LICENSE). This repository is
+publicly viewable for evaluation and reference; reuse, redistribution,
+modification, or download for any other purpose is not permitted without
+prior written permission from the author.
