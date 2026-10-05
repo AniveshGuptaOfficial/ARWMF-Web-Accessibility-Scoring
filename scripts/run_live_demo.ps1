@@ -32,7 +32,8 @@ function Start-Server {
         Stop-Process -Id $owner -Force -ErrorAction SilentlyContinue
         Start-Sleep -Seconds 1
     }
-    $p = Start-Process python -ArgumentList (Join-Path $root "webapp\server.py") -PassThru `
+    $script = Join-Path $root "webapp\server.py"
+    $p = Start-Process python -ArgumentList "`"$script`"" -PassThru `
         -WindowStyle Hidden -RedirectStandardOutput $srvOut -RedirectStandardError $srvErr
     foreach ($i in 1..40) {
         Start-Sleep -Milliseconds 500
